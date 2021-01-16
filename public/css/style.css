@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+body {
+  background: #eaeaea;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.5fr 1fr;
+  margin-top: 25px;
+  margin-left: 15px;
+  margin-right: 15px;
+
+  gap: 0px 0px;
+  grid-template-areas:
+    "area1 area2"
+    "area3 area3";
+}
+.area1 {
+  grid-area: area1;
+  size: 100px;
+}
+.area2 {
+  grid-area: area2;
+}
+.area3 {
+  grid-area: area3;
+}

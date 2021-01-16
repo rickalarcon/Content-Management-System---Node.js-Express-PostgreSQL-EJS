@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<head>
+	<title> UI - Flashcard Content Management </title>
+	   <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   
+    <link rel = "stylesheet" href ="/css/style.css" >
+
+</head>
+
+
+<body>
+
+<nav class=" navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class=" navbar-brand" href="#"> CONTENT MANAGEMENT SYSTEM - FLASHCARDS </a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    </ul>
+    <form class="form-inline my-2 my-lg-0" >
+      <input class="form-control mr-sm-2 search" type="search" placeholder="Search ID" >
+    </form>
+  </div>
+</nav>
+
+
+
+<div class="grid-container">
+	<div class="area1">
+	<h4 >Create New Flashcard</h4>
+	<form action= "/flashcards" method="post">
+	  <div class="form-group row col-auto">
+	    <label for="id" class="col-sm-2 col-form-label">ID</label>
+	    <div class="col-sm-10">
+	      <input type="number" class="form-control" id="id" name="id" placeholder="Flashcard id">
+	    </div>
+	  </div>
+	  <div class="form-group row col-auto">
+	    <label for="name" class="col-sm-2 col-form-label">Name</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="name" name="name" placeholder="Flashcard name">
+	    </div>
+	  </div>
+	  <div class="form-group row col-auto">
+	    <label for="category" class="col-sm-2 col-form-label">Category</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="category" name="category" placeholder="Category">
+	    </div>
+	  </div> 
+	  <div class="form-group row col-auto">
+	    <label for="question" class="col-sm-2 col-form-label">Question</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="question" name="question" placeholder="Question">
+	    </div>
+	  </div>
+	  <div class="form-group row col-auto">
+	    <label for="answer" class="col-sm-2 col-form-label">Answer</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="answer" name="answer" placeholder="Answer">
+	    </div>
+	  </div>
+	  <div class="form-group row col-auto">
+	    <label for="language" class="col-sm-2 col-form-label">Language</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="language" name="language" placeholder="Supported language">
+	    </div>
+	  </div>
+	  <div class="form-group row col-auto">
+	    <div class="col-sm-10">
+	      <button type="submit" class="btn btn-primary">Submit!</button>
+	    </div>
+	  </div>
+	</form>
+
+	</div>
+	<div class="area2">
+		<h4>Add New Supported Language:</h4>	
+		<form action= "/flashcards/add_lang" method="post" id = "sup_lang">
+		  <div class="form-group row col-auto">
+		    <label for="sup_id" class="col-sm-2 col-form-label">ID</label>
+		    <div class="col-sm-10">
+		      <input type="number" class="form-control" id="sup_id" name="id" placeholder="Flashcard id">
+		    </div>
+		  </div>
+		  <div class="form-group row col-auto">
+		    <label for="s_lang" class="col-sm-2 col-form-label">New Language</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="s_lang" name="language" placeholder="New Supported Language">
+		    </div>
+		  </div>
+		  <div class="form-group row col-auto">
+		    <div class="col-sm-10">
+		      <button type="submit" class="btn btn-primary">Add!</button>
+		    </div>
+		  </div>
+		</form>
+
+	</div>
+	<div class="area3">
+	<h4> Total Number of Flashcards: <%= all_flashcards.length %> </h4>
+	<input type="text" id="search" placeholder="live search"  ></input>
+	<table class="table table-hover">
+	  <thead>
+	    <tr class="bg-success text-white ">
+	      <th scope="col">ID</th>
+	      <th scope="col">NAME</th>
+	      <th scope="col">CATEGORY</th>
+		  <th>DATE CREATED</th>
+		  <th>QUESTION   </th>
+		  <th>ANSWER      </th>
+		  <th>SUPPORTED_LAN  </th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    	<% for(var i = 0; i < all_flashcards.length; i++){ %>
+					<tr class="table-success">
+				    <td class ="t_id"> <%= all_flashcards[i].id %> </td>
+				    <td class="name"> <%= all_flashcards[i].name %></td>
+				    <td> <%= all_flashcards[i].category %></td>
+				    <td><%= all_flashcards[i].date_created.toDateString() %> </td>
+				    <td><%= all_flashcards[i].question %>   </td>
+				    <td><%= all_flashcards[i].answer %>      </td>
+				    <td><%= all_flashcards[i].supported_lang %>  </td>
+	            	</tr>
+	            	<%} %> 
+	  </tbody>
+	</table>
+	</div>
+</div>
+
+<script src="/js/index.js"> </script>
+
+</body>
+
+</html>
